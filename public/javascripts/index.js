@@ -19,11 +19,19 @@ $('glutton').addEventListener('click', () => {
     render();
     persist()
 });
+$('glutton').addEventListener('touchend', function(e) {
+    e.preventDefault();
+    e.target.click();
+}, false);
 
 $('beach').addEventListener('click', () => {
     beach++;
     render();
     persist()
 });
+$('beach').addEventListener('touchend', function(e) {
+    e.preventDefault();
+    e.target.click();
+}, false);
 
 render();
