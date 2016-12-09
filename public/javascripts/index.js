@@ -1,5 +1,9 @@
-let glutton = localStorage.getItem('glutton') || 0;
-let beach = localStorage.getItem('beach') || 0;
+window.onerror = function(errorMsg, url, lineNumber, column, exception) {
+    $("error").innerText = errorMsg + " - " + exception.toString();
+};
+
+var glutton = localStorage.getItem('glutton') || 0;
+var beach = localStorage.getItem('beach') || 0;
 
 function $(id) {
     return document.getElementById(id);
@@ -19,7 +23,7 @@ function render() {
 function onGlutton() {
     glutton++;
     render();
-    persist()
+    persist();
 }
 
 function onBeach() {
@@ -33,3 +37,5 @@ $('glutton').addEventListener('click', onGlutton);
 $('beach').addEventListener('click', onBeach);
 
 render();
+
+
