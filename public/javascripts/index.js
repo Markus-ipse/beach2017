@@ -1,7 +1,9 @@
 let glutton = localStorage.getItem('glutton') || 0;
 let beach = localStorage.getItem('beach') || 0;
 
-const $ = (id) => document.getElementById(id);
+function $(id) {
+    return document.getElementById(id);
+}
 
 function persist() {
     localStorage.setItem('glutton', glutton);
@@ -14,24 +16,20 @@ function render() {
     $('kd').innerText = Math.round(beach/glutton * 100) / 100;
 }
 
-$('glutton').addEventListener('click', () => {
+function onGlutton() {
     glutton++;
     render();
     persist()
-});
-$('glutton').addEventListener('touchend', function(e) {
-    e.preventDefault();
-    e.target.click();
-}, false);
+}
 
-$('beach').addEventListener('click', () => {
+function onBeach() {
     beach++;
     render();
     persist()
-});
-$('beach').addEventListener('touchend', function(e) {
-    e.preventDefault();
-    e.target.click();
-}, false);
+}
+
+$('glutton').addEventListener('click', onGlutton);
+
+$('beach').addEventListener('click', onBeach);
 
 render();
