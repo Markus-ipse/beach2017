@@ -14,3 +14,9 @@ span {
 a {
   color: #00B7FF;
 }
+
+.clear {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

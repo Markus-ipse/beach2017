@@ -20,21 +20,26 @@ function render() {
     $('kd').innerText = Math.round(beach/glutton * 100) / 100;
 }
 
-function onGlutton() {
-    glutton++;
+function update() {
     render();
     persist();
 }
 
-function onBeach() {
+$('glutton').addEventListener('click', function onGlutton() {
+    glutton++;
+    update();
+});
+
+$('beach').addEventListener('click', function onBeach() {
     beach++;
-    render();
-    persist()
-}
+    update();
+});
 
-$('glutton').addEventListener('click', onGlutton);
-
-$('beach').addEventListener('click', onBeach);
+$('clear').addEventListener('click', function onClear() {
+    glutton = 0;
+    beach = 0;
+    update();
+});
 
 render();
 
