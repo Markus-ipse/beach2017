@@ -1,9 +1,11 @@
 {
-  "name": "fatso",
+  "name": "BeachFactor",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "npm run buildCSS && npm run serve",
+    "serve": "node ./bin/www",
+    "buildCSS": "postcss --use autoprefixer style.css -d public/stylesheets/"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
@@ -13,5 +15,9 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.3",
+    "postcss-cli": "^2.6.0"
   }
 }

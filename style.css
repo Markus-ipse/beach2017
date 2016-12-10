@@ -12,10 +12,13 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-span {
+.count {
     margin-left: .5em;
     position: absolute;
     right: 16px;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .wrapper {
@@ -27,13 +30,12 @@ span {
 
 .main {
     width: 300px;
-    position: relative;
 }
 
 .button-wrapper {
     margin-bottom: 12px;
     display: flex;
-    align-items: center;
+    position: relative;
 }
 
 .glutton,
@@ -51,6 +53,8 @@ span {
     font-size: 1rem;
     border-radius: .25rem;
     border: 1px solid transparent;
+    -webkit-appearance: button;
+    touch-action: manipulation;
 }
 
 .glutton {
@@ -71,10 +75,10 @@ span {
     border-color: #5cb85c;
 }
 
-.beach :hover {
+.beach:hover {
     color: #fff;
-    background-color: #449d44;
-    border-color: #419641;
+    background-color: #398439;
+    border-color: #2d672d;
 }
 
 .clear {

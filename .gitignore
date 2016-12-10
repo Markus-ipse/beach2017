@@ -34,3 +34,6 @@ node_modules
 
 # Webstorm/IntelliJ stuff
 .idea
+
+# Compiled CSS
+public/stylesheets
