@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run buildCSS && npm run serve",
-    "serve": "node ./bin/www",
+    "start": "node ./bin/www",
+    "postinstall": "npm run buildCSS",
     "buildCSS": "postcss --use autoprefixer style.css -d public/stylesheets/"
   },
   "dependencies": {
