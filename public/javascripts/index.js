@@ -1,23 +1,27 @@
-window.onerror = function(errorMsg, url, lineNumber, column, exception) {
-    $("error").innerText = errorMsg + " - " + exception.toString();
-};
+var $ = document.getElementById.bind(document);
 
 var glutton = localStorage.getItem('glutton') || 0;
 var beach = localStorage.getItem('beach') || 0;
 
-function $(id) {
-    return document.getElementById(id);
-}
+var elGluttonCount = $('js-glutton-count');
+var elBeachCount = $('js-beach-count');
+var elBeachFactor = $('js-kd');
 
 function persist() {
     localStorage.setItem('glutton', glutton);
     localStorage.setItem('beach', beach);
 }
 
+function calcBeachFactor(_beach, _glutton) {
+    var beachFactor = Math.round(_beach / _glutton * 100) / 100;
+    if (isNaN(beachFactor)) return '-';
+
+    return beachFactor;
+}
 function render() {
-    $('glutton-count').innerText = glutton;
-    $('beach-count').innerText = beach;
-    $('kd').innerText = Math.round(beach/glutton * 100) / 100;
+    elGluttonCount.innerText = glutton;
+    elBeachCount.innerText = beach;
+    elBeachFactor.innerText = calcBeachFactor(beach, glutton);
 }
 
 function update() {
@@ -25,17 +29,17 @@ function update() {
     persist();
 }
 
-$('glutton').addEventListener('click', function onGlutton() {
+$('js-glutton').addEventListener('click', function onGlutton() {
     glutton++;
     update();
 });
 
-$('beach').addEventListener('click', function onBeach() {
+$('js-beach').addEventListener('click', function onBeach() {
     beach++;
     update();
 });
 
-$('clear').addEventListener('click', function onClear() {
+$('js-clear').addEventListener('click', function onClear() {
     glutton = 0;
     beach = 0;
     update();
@@ -44,3 +48,6 @@ $('clear').addEventListener('click', function onClear() {
 render();
 
 
+window.onerror = function(errorMsg) {
+    $("js-error").innerText = errorMsg;
+};
