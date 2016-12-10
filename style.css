@@ -12,6 +12,23 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+button {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    border: 1px solid transparent;
+    -webkit-appearance: button;
+    touch-action: manipulation;
+}
+
 .count {
     margin-left: .5em;
     position: absolute;
@@ -41,20 +58,6 @@ body {
 .glutton,
 .beach {
     width:100%;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.25;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
-    padding: .5rem 1rem;
-    font-size: 1rem;
-    border-radius: .25rem;
-    border: 1px solid transparent;
-    -webkit-appearance: button;
-    touch-action: manipulation;
 }
 
 .glutton {
@@ -81,8 +84,29 @@ body {
     border-color: #2d672d;
 }
 
+.beach-factor {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.beach-factor-label {
+    font-size: 4rem;
+}
+
 .clear {
+    color: #ccc;
+    background: transparent none;
+    border-color: #ccc;
+
     position: absolute;
     bottom: 10px;
     right: 10px;
+
+    font-size: 9px;
+    padding: 6px 6px;
+}
+
+.clear:hover {
+    color: #373a3c;
+    background-color: #e6e6e6;
+    border-color: #adadad;
 }

@@ -5,7 +5,7 @@ var beach = localStorage.getItem('beach') || 0;
 
 var elGluttonCount = $('js-glutton-count');
 var elBeachCount = $('js-beach-count');
-var elBeachFactor = $('js-kd');
+var elBeachFactor = $('js-beach-factor');
 
 function persist() {
     localStorage.setItem('glutton', glutton);
