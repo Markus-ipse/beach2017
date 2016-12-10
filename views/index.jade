@@ -1,13 +1,15 @@
 extends layout
 
 block content
-    div
-        button#glutton Omnomnom
-        span#glutton-count 0
-    div
-        button#beach Beach 2017
-        span#beach-count 0
-    p Beach factor:
-        span#kd
-    div#error
-    button#clear.clear x
+    div.wrapper
+        div.main
+            div.button-wrapper
+                button#js-glutton.glutton Om nom nom
+                span#js-glutton-count 0
+            div.button-wrapper
+                button#js-beach.beach Beach 2017
+                span#js-beach-count 0
+            p Beach factor:
+                span#js-kd
+            div#js-error
+        button#js-clear.clear x

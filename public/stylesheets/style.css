@@ -1,22 +1,84 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+    box-sizing: border-box;
 }
 
-div {
-  margin-bottom: 12px;
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 span {
-  margin-left: .5em;
+    margin-left: .5em;
+    position: absolute;
+    right: 16px;
 }
 
-a {
-  color: #00B7FF;
+.wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    width: 300px;
+    position: relative;
+}
+
+.button-wrapper {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.glutton,
+.beach {
+    width:100%;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    border: 1px solid transparent;
+}
+
+.glutton {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #f0ad4e;
+}
+
+.glutton:hover {
+    color: #fff;
+    background-color: #ec971f;
+    border-color: #eb9316;
+}
+
+.beach {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+}
+
+.beach :hover {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #419641;
 }
 
 .clear {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
