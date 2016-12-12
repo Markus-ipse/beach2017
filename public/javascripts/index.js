@@ -1,53 +1,75 @@
 var $ = document.getElementById.bind(document);
-
-var glutton = localStorage.getItem('glutton') || 0;
-var beach = localStorage.getItem('beach') || 0;
-
-var elGluttonCount = $('js-glutton-count');
-var elBeachCount = $('js-beach-count');
-var elBeachFactor = $('js-beach-factor');
-
-function persist() {
-    localStorage.setItem('glutton', glutton);
-    localStorage.setItem('beach', beach);
+function lsGet(key) {
+    var val = localStorage.getItem(key);
+    if (val === null) return null;
+    return JSON.parse(val);
 }
 
-function calcBeachFactor(_beach, _glutton) {
-    var beachFactor = Math.round(_beach / _glutton * 100) / 100;
+var el = {
+    beachFactor: $('js-beach-factor'),
+    btnGlutton: $('js-glutton'),
+    btnBeach: $('js-beach'),
+    btnReset: $('js-reset'),
+    error: $('js-error'),
+    label: $('js-label')
+};
+
+var _state = {
+    glutton: lsGet('glutton') || 0,
+    beach: lsGet('beach') || 0,
+    displayAsPoints: lsGet('displayAsPoints')
+};
+
+function persist(state) {
+    localStorage.setItem('glutton', state.glutton);
+    localStorage.setItem('beach', state.beach);
+    localStorage.setItem('displayAsPoints', state.displayAsPoints);
+}
+
+function calcBeachFactor(beach, glutton, displayAsPoints) {
+    if (displayAsPoints) {
+        return beach - glutton;
+    }
+    
+    var beachFactor = Math.round(beach / glutton * 100) / 100;
     if (isNaN(beachFactor)) return '-';
 
     return beachFactor;
 }
-function render() {
-    elGluttonCount.innerText = glutton;
-    elBeachCount.innerText = beach;
-    elBeachFactor.innerText = calcBeachFactor(beach, glutton);
+
+function render(state) {
+    el.beachFactor.innerText = calcBeachFactor(state.beach, state.glutton, state.displayAsPoints);
+    el.label.innerText = state.displayAsPoints ? "Beach points:" : "Beach factor:"
 }
 
-function update() {
-    render();
-    persist();
+function update(state) {
+    render(state);
+    persist(state);
 }
 
-$('js-glutton').addEventListener('click', function onGlutton() {
-    glutton++;
-    update();
+el.btnGlutton.addEventListener('click', function onGlutton() {
+    _state.glutton++;
+    update(_state);
 });
 
-$('js-beach').addEventListener('click', function onBeach() {
-    beach++;
-    update();
+el.btnBeach.addEventListener('click', function onBeach() {
+    _state.beach++;
+    update(_state);
 });
 
-$('js-clear').addEventListener('click', function onClear() {
-    glutton = 0;
-    beach = 0;
-    update();
+el.btnReset.addEventListener('click', function onReset() {
+    _state.glutton = 0;
+    _state.beach = 0;
+    update(_state);
 });
 
-render();
-
+el.beachFactor.addEventListener('click', function toggleDisplay() {
+   _state.displayAsPoints = !_state.displayAsPoints;
+    update(_state);
+});
 
 window.onerror = function(errorMsg) {
-    $("js-error").innerText = errorMsg;
+    el.error.innerText = errorMsg;
 };
+
+render(_state);

@@ -16,7 +16,6 @@ button {
     display: inline-block;
     font-weight: 400;
     line-height: 1.25;
-    text-align: center;
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
@@ -29,15 +28,6 @@ button {
     touch-action: manipulation;
 }
 
-.count {
-    margin-left: .5em;
-    position: absolute;
-    right: 16px;
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
 .wrapper {
     height: 100%;
     display: flex;
@@ -47,6 +37,7 @@ button {
 
 .main {
     width: 300px;
+    text-align: center;
 }
 
 .button-wrapper {
@@ -85,14 +76,14 @@ button {
 }
 
 .beach-factor {
-    text-align: center;
     margin-bottom: 4rem;
+    cursor: pointer;
 }
-.beach-factor-label {
+.beach-factor {
     font-size: 4rem;
 }
 
-.clear {
+.reset {
     color: #ccc;
     background: transparent none;
     border-color: #ccc;
@@ -105,7 +96,7 @@ button {
     padding: 6px 6px;
 }
 
-.clear:hover {
+.reset:hover {
     color: #373a3c;
     background-color: #e6e6e6;
     border-color: #adadad;
