@@ -36,4 +36,4 @@ node_modules
 .idea
 
 # Compiled CSS
-public/stylesheets
+public/css
