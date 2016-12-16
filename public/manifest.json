@@ -1,0 +1,27 @@
+{
+  "short_name": "Beach Factor",
+  "name": "Beach Factor",
+  "Description": "Keep track on how well you resist temptation.",
+  "icons": [
+    {
+      "src": "icons/icon_96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#5cb85c",
+  "theme_color": "white"
+}
