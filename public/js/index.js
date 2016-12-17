@@ -5,16 +5,28 @@ if ('serviceWorker' in navigator) {
             console.log('Registration succeeded. Scope is ' + reg.scope);
         }).catch(function(error) {
         // registration failed
-        console.log('Registration failed with ' + error);
+        console.error('Registration failed with ' + error);
     });
 }
 
-var $ = document.getElementById.bind(document);
+var deferredPrompt;
+window.addEventListener('beforeinstallprompt', function(e) {
+    console.log('beforeinstallprompt Event fired');
+    e.preventDefault();
+
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+
+    return false;
+});
+
 function lsGet(key) {
     var val = localStorage.getItem(key);
     if (val === null) return null;
     return JSON.parse(val);
 }
+
+var $ = document.getElementById.bind(document);
 
 var el = {
     beachFactor: $('js-beach-factor'),
@@ -56,6 +68,12 @@ function render(state) {
 function update(state) {
     render(state);
     persist(state);
+
+    // show app install banner after three interactions
+    if (deferredPrompt && (state.beach + state.omnomnom) > 2) {
+        deferredPrompt.prompt();
+        deferredPrompt = null;
+    }
 }
 
 el.btnOmnomnom.addEventListener('click', function onOmnomnom() {

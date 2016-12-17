@@ -21,6 +21,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get("/safari.manifest", function (req, res) {
+    res.set("Content-Type", "text/cache-manifest");
+    res.set("Cache-Control", "no-store, no-cache");
+    res.set("Expires", "-1");
+    res.sendFile("/safari.manifest", {root: __dirname});
+});
+
 app.use('/', index);
 
 // catch 404 and forward to error handler
