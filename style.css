@@ -46,18 +46,18 @@ button {
     position: relative;
 }
 
-.glutton,
+.omnomnom,
 .beach {
     width:100%;
 }
 
-.glutton {
+.omnomnom {
     color: #fff;
     background-color: #f0ad4e;
     border-color: #f0ad4e;
 }
 
-.glutton:hover {
+.omnomnom:hover {
     color: #fff;
     background-color: #ec971f;
     border-color: #eb9316;

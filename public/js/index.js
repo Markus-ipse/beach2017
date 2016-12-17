@@ -18,7 +18,7 @@ function lsGet(key) {
 
 var el = {
     beachFactor: $('js-beach-factor'),
-    btnGlutton: $('js-glutton'),
+    btnOmnomnom: $('js-omnomnom'),
     btnBeach: $('js-beach'),
     btnReset: $('js-reset'),
     error: $('js-error'),
@@ -26,30 +26,30 @@ var el = {
 };
 
 var _state = {
-    glutton: lsGet('glutton') || 0,
+    omnomnom: lsGet('omnomnom') || 0,
     beach: lsGet('beach') || 0,
-    displayAsPoints: lsGet('displayAsPoints')
+    displayAsPoints: lsGet('displayAsPoints') || true
 };
 
 function persist(state) {
-    localStorage.setItem('glutton', state.glutton);
+    localStorage.setItem('omnomnom', state.omnomnom);
     localStorage.setItem('beach', state.beach);
     localStorage.setItem('displayAsPoints', state.displayAsPoints);
 }
 
-function calcBeachFactor(beach, glutton, displayAsPoints) {
+function calcBeachFactor(beach, omnomnom, displayAsPoints) {
     if (displayAsPoints) {
-        return beach - glutton;
+        return beach - omnomnom;
     }
     
-    var beachFactor = Math.round(beach / glutton * 100) / 100;
+    var beachFactor = Math.round(beach / omnomnom * 100) / 100;
     if (isNaN(beachFactor)) return '-';
 
     return beachFactor;
 }
 
 function render(state) {
-    el.beachFactor.innerText = calcBeachFactor(state.beach, state.glutton, state.displayAsPoints);
+    el.beachFactor.innerText = calcBeachFactor(state.beach, state.omnomnom, state.displayAsPoints);
     el.label.innerText = state.displayAsPoints ? "Beach points:" : "Beach factor:"
 }
 
@@ -58,8 +58,8 @@ function update(state) {
     persist(state);
 }
 
-el.btnGlutton.addEventListener('click', function onGlutton() {
-    _state.glutton++;
+el.btnOmnomnom.addEventListener('click', function onOmnomnom() {
+    _state.omnomnom++;
     update(_state);
 });
 
@@ -69,7 +69,7 @@ el.btnBeach.addEventListener('click', function onBeach() {
 });
 
 el.btnReset.addEventListener('click', function onReset() {
-    _state.glutton = 0;
+    _state.omnomnom = 0;
     _state.beach = 0;
     update(_state);
 });
